@@ -16,14 +16,17 @@ content.appendChild(h3);
 const div = document.createElement('div');
 const newP = document.createElement('p');
 const newh1 = document.createElement('h1');
+const newElement = document.createElement('div')
 
 newP.textContent = "ME TOO!!";
 newh1.textContent = "I'm a div!!";
 
-div.style['background-color'] = "#FFC0CB";
-div.style.cssText = 'border-color: black; border-style: solid';
-
+div.style.cssText = 'border-color: black; border-style: solid; background-color: pink';
+newElement.style.cssText = 'border-color: green; border-style: solid'
+newElement.innerHTML = "<h1>this is me</h1>"
+newElement.style.color = "grey"
 div.appendChild(newh1);
 div.appendChild(newP);
 
 content.appendChild(div);
+content.append(newElement);
