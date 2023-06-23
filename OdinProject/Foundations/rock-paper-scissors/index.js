@@ -30,6 +30,11 @@ const userScoreLine = document.createElement('p')
 const compScoreLine = document.createElement('p')
 const winnerAnnouncer = document.createElement('p')
 
+const para = document.querySelectorAll('p')
+para.forEach((value) => {
+    value.style.cssText = "font-family: Arial, Helvetica, sans-serif;"
+})
+
 content.style.cssText = "padding: 10px; text-align: center"
 content.innerHTML = "<p style=\"font-family: Arial, Helvetica, sans-serif\">Welcome to Rock Paper Scissors</p> <p style=\"font-family: Arial, Helvetica, sans-serif\">Please click \"New Game\" to start a new game!</p>"
 content.appendChild(userScoreLine);
