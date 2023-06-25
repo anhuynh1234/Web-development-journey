@@ -1,0 +1,61 @@
+body{
+    background-color: rgb(21, 131, 94);
+    flex-direction: column;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title{
+    color:rgb(17, 24, 18)
+}
+
+.mainDiv{
+    display:flex;
+    flex-direction: column;
+    margin: 20px;
+    flex: 1 1 0;
+    height: auto;
+    width: 300px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color:brown;
+}
+
+.display{
+    height: 80px;
+    border-color: black;
+    border-style: solid;
+    font-size: 50px;
+    background: white;
+    flex: 1 1 0;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.firstRow, .secondRow, .thirdRow, .fourthRow, .fifthRow{
+    flex: 1 1 0;
+    display:flex;
+}
+
+#clear{
+    flex: 2.27 1 0;
+    border-color: black;
+}
+
+#zero{
+    border-radius: 0px 0px 0px 10px;
+}
+
+#equal{
+    border-radius: 0px 0px 10px 0px;
+}
+
+#divide, #percent, #seven, #eight, #nine, #four, #five,
+#six, #minus, #multiply, #one, #two, #three, #plus, #zero, #negative,
+#decimal, #equal{
+    flex: 1 1 0;
+    height: 60px;
+    border-color: black;
+}
