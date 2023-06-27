@@ -25,13 +25,36 @@ body{
 }
 
 .display{
-    height: 80px;
+    height: auto;
     border-color: black;
     border-style: solid;
-    font-size: 50px;
     background: white;
     flex: 1 1 0;
     border-radius: 10px 10px 0px 0px;
+    display: flex;
+    justify-items: right;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0;
+}
+
+.text{
+    font-size: 30px;
+    text-align: right;
+    align-items: right;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 45px;
+    margin-bottom: 0px;
+    position:relative;
+    align-self: flex-end;
+    display: flex;
+}
+
+.text span{
+    align-self: flex-end;
 }
 
 .firstRow, .secondRow, .thirdRow, .fourthRow, .fifthRow{
