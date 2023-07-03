@@ -1,9 +1,4 @@
-let errorMath = false
-let line = []
-let numbers = '1234567890'.split()
-let specialChars = ['.', '%', '(-)']
-let operatorsChar = Array.from('+-*/')
-
+let line = '', savedNum = '', operation = ''
 
 const numbKeys = document.querySelectorAll('.numbers')
 const display = document.querySelector(".display .text span")
@@ -14,69 +9,67 @@ const specials = document.querySelectorAll('.special')
 
 numbKeys.forEach((number) => {
     number.addEventListener('click', () => {
-        if(line == "ERROR!"){
-            line = [];
-            errorMath = false;
-        }
-        line.push(number.innerText)
-        display.innerText = line.join('')
+        line += number.innerText;
+        display.innerText = line
     })
 })
 
 clear.addEventListener('click', () => {
-    errorMath = false;
-    line = [];
+    line = '';
+    operation = ';'
     display.innerText = "";
+    savedNum = '';
 })
 
 operators.forEach((operator) => {
     operator.addEventListener('click', ()=> {
-        if(line == "ERROR!"){
-            line = [];
-            errorMath = false;
+        if((line != '' && line != '-')){
+            savedNum = line;
+            line = ''
+            operation = operator.innerText;
+        }else if(operation != ''){
+            operation = operator.innerText;
         }
-        if(line == []){
-            errorMath = true;
-        }
-        line.push(operator.innerText)
-        display.innerText = line.join('')
     })
 })
 
 specials.forEach((special)=>{
     special.addEventListener('click', () => {
-        if(line[0] == "ERROR!"){
-            line = [];
-            errorMath = false;
+        switch(special.innerText){
+            case '%':
+                if(line != ""){
+                    let tempNum = Number(line);
+                    tempNum /= 100;
+                    line = tempNum.toString();
+                }
+                break;
+            case '(-)':
+                line = '-' + line;
         }
-
-        if(line == []){
-            errorMath = true;
-        }
-        line.push(special.innerText);
-        display.innerText = line.join('');
+        display.innerText = line;
     })
 })
 
 equal.addEventListener('click', () => {
-    if(errorMath){
-        line.push("ERROR!");
-        display.innerText = line.join('');
-    }
-    let result = performCalc(line)
-    line = [];
-    line.push(result);
-    display.innertext = line.join('');
-})
-
-
-function performCalc(line){
-    let numb = 0, multiple = 0;
-    let order = []
-
-    for(let i = 1; i < line.length; i++){
-        if(numbers.includes(line[i])){
-            
+    if(savedNum != '' && operation != '' ){
+        let displayNum = 0;
+        switch(operation){
+            case('+'):
+                displayNum = Number(savedNum) + Number(line);
+                break;
+            case('-'):
+                displayNum = Number(savedNum) - Number(line);
+                break;
+            case('*'):
+                displayNum = Number(savedNum) * Number(line);
+                break;
+            case('/'):
+                displayNum = Number(savedNum) / Number(line);
+                break;
         }
+        display.innerText = displayNum.toString();
+        line = displayNum.toString();
+        operation = '';
+        savedNum = ''
     }
-}
+})
